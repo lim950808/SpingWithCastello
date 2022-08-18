@@ -2,7 +2,7 @@ package com.fastcampus.ch2;
 
 import java.lang.reflect.Method;
 
-public class Main {
+public class PrivateMethodCall {
 	public static void main(String[] args) throws Exception {
 //		Hello hello = new Hello(); //Hello 클래스 객체 생성
 //		hello.main(); //private이라서 외부 호출 불가
