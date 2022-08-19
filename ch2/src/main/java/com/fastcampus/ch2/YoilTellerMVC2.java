@@ -1,10 +1,6 @@
 package com.fastcampus.ch2;
 
-import java.io.IOException;
 import java.util.Calendar;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,18 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class YoilTellerMVC {
-	@ExceptionHandler(Exception.class) //예외처리
+public class YoilTellerMVC2 {
+	@ExceptionHandler(Exception.class)
 	public String catcher(Exception ex) {
-		ex.printStackTrace();
 		return "yoilError";
 	}
 	
-    @RequestMapping("/getYoilMVC") // http://localhost/ch2/getYoilMVC
-    public String main(@RequestParam(required=true) int year,
-			    	   @RequestParam(required=true)int month,
-			    	   @RequestParam(required=true)int day, Model model) {
-    //public void main(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    @RequestMapping("/getYoilMVC2") // http://localhost/ch2/getYoilMVC2
+    public String main(@RequestParam(required=true) int year, 
+    		@RequestParam(required=true) int month, 
+    		@RequestParam(required=true) int day, Model model) {
  
         // 1. 유효성 검사
     	if(!isValid(year, month, day)) 
@@ -57,4 +51,4 @@ public class YoilTellerMVC {
     	
     	return (1<=month && month<=12) && (1<=day && day<=31); // 간단히 체크 
     }
-}
+} 
