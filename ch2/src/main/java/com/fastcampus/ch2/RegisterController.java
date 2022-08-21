@@ -2,27 +2,46 @@ package com.fastcampus.ch2;
 
 import java.net.URLEncoder;
 
+import org.springframework.beans.propertyeditors.StringArrayPropertyEditor;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller // ctrl+shift+o 자동 임포트 
+@RequestMapping("/register")
 public class RegisterController {
-	@RequestMapping(value="/register/add", method= {RequestMethod.GET, RequestMethod.POST}) // 신규회원 가입
+	
+	@InitBinder
+	public void toDate(WebDataBinder binder) {
+		
+		ConversionService conversionService = binder.getConversionService();
+		System.out.println("conversionService = " + conversionService);
+		
+		/* User.java에서 @DateTimeFormat(pattern="yyyy-MM-dd")로 대체 가능 */
+//		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+//		binder.registerCustomEditor(Date.class, new CustomDateEditor(df, false)); //"yyyy-MM-dd" 형식으로 입력시 Date 타입으로 변형시켜줌
+		
+		binder.registerCustomEditor(String[].class, "hobby", new StringArrayPropertyEditor("#")); //#으로 구분시 배열로 변형시켜줌
+	}
+	
+	@RequestMapping(value="/add", method= {RequestMethod.GET, RequestMethod.POST}) // 신규회원 가입
 //	@GetMapping("/register/add") // 4.3부터 추가
 	public String register() {
 		return "registerForm";  // WEB-INF/views/registerForm.jsp
 	}
 	
 //	@RequestMapping(value="/register/save", method=RequestMethod.POST) // 신규회원 가입
-	@PostMapping("/register/save")
-	public String save(User user, Model m) throws Exception {
-	//public String save(@ModelAttribute("user") User user, Model m) throws Exception {
+	@PostMapping("/save")
+	public String save(User user, BindingResult result, Model m) throws Exception {
+		System.out.println("result = " + result);
+		System.out.println("user = " + user);
+		
 		// 1. 유효성 검사
 		if(!isValid(user)) {
 			String msg = URLEncoder.encode("id를 잘못입력하셨습니다.", "utf-8");
@@ -36,7 +55,7 @@ public class RegisterController {
 	}
 
 	private boolean isValid(User user) {
-		return false;
+		return true;
 	}
 }
 
