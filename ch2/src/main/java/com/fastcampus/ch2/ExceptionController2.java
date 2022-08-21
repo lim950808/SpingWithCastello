@@ -19,14 +19,14 @@ class MyException extends RuntimeException {
 
 @Controller
 public class ExceptionController2 {
-	//GlobalCatcher.java¿¡¼­ Àü¿ª ¿¹¿ÜÃ³¸®
+	//GlobalCatcher.javaì—ì„œ ì „ì—­ ì˜ˆì™¸ì²˜ë¦¬
 	@RequestMapping("/ex3")
 	public String main() throws Exception {
-		throw new MyException("¿¹¿Ü°¡ ¹ß»ıÇß½À´Ï´Ù.");
+		throw new MyException("ì˜ˆì™¸ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 	}
 	
 	@RequestMapping("/ex4")
 	public String main2() throws Exception {
-		throw new FileNotFoundException("¿¹¿Ü°¡ ¹ß»ıÇß½À´Ï´Ù.");
+		throw new FileNotFoundException("ì˜ˆì™¸ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.");
 	}
 }

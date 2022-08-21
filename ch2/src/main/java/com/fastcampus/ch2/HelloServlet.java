@@ -15,21 +15,21 @@ import javax.servlet.http.HttpServletResponse;
 public class HelloServlet extends HttpServlet {
 	@Override
 	public void init() throws ServletException {  
-		// ¼­ºí¸´ ÃÊ±âÈ­ - ¼­ºí¸´ÀÌ »ı¼º ¶Ç´Â ¸®·Îµù ¶§, ´Ü ÇÑ¹ø¸¸ ¼öÇàµÊ.
+		// ì„œë¸”ë¦¿ ì´ˆê¸°í™” - ì„œë¸”ë¦¿ì´ ìƒì„± ë˜ëŠ” ë¦¬ë¡œë”© ë•Œ, ë‹¨ í•œë²ˆë§Œ ìˆ˜í–‰ë¨.
 		System.out.println("[HelloSerlvet] init()");
 	}
 	   
-	@Override // È£ÃâµÉ ¶§¸¶´Ù ¹İº¹ÀûÀ¸·Î ¼öÇàµÊ.
+	@Override // í˜¸ì¶œë  ë•Œë§ˆë‹¤ ë°˜ë³µì ìœ¼ë¡œ ìˆ˜í–‰ë¨.
 	public void service(HttpServletRequest request, HttpServletResponse response) {
-		// 1. ÀÔ·Â
-		// 2. Ã³¸® 
-		// 3. Ãâ·Â
+		// 1. ì…ë ¥
+		// 2. ì²˜ë¦¬  
+		// 3. ì¶œë ¥
 		System.out.println("[HelloSerlvet] service()");
 	}
 
 	@Override   
 	public void destroy() {   
-		// µŞÁ¤¸® ÀÛ¾÷ - ¼­ºí¸´ÀÌ Á¦°Å(unload)µÉ ¶§, ´Ü ÇÑ¹ø¸¸ ¼öÇàµÊ.
+		// ë’·ì •ë¦¬ ì‘ì—… - ì„œë¸”ë¦¿ì´ ì œê±°(unload)ë  ë•Œ, ë‹¨ í•œë²ˆë§Œ ìˆ˜í–‰ë¨.
 		System.out.println("[HelloSerlvet] destroy()");  
 	}
 }
