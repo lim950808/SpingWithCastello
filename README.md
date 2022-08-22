@@ -1,4 +1,4 @@
-# SpringWithCastello
+# Ch02. Spring MVC
 스프링의 정석 : 남궁성과 끝까지 간다<br>
 https://fastcampus.co.kr/dev_academy_nks<br>
 https://github.com/castello/spring_basic<br>
